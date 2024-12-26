@@ -42,7 +42,7 @@ Welcome to my personal portfolio website! This repository contains the source co
 
 ## Deployment
 
-The website is live and can be accessed at: [Your Portfolio URL](https://yourportfolio.com)
+The website is live and can be accessed at: [Your Portfolio URL](https://piyush06singhal.github.io/Personal-Portfolio-Website/)
 
 ## Contributing
 If you'd like to contribute to this project:
