@@ -1,3 +1,6 @@
+
+
+
 const navMenu = document.getElementById("nav-menu"),
     navToggle = document.getElementById("nav-toggle");
 navClose = document.getElementById("nav-close");
@@ -71,12 +74,7 @@ modalCloses.forEach((modalClose) => {
 var swiper = new Swiper(".portfolio__container", {
     cssMode: true,
     loop: true,
-    slidesPerView: 1,
-    spaceBetween: 20,
-    breakpoints: {
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 2 }
-    },
+
     navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -165,43 +163,4 @@ themeButton.addEventListener("click", () => {
     localStorage.setItem("selected-icon", getCurrentIcon());
 });
 
-/*==================== Reveal on Scroll ====================*/
-const revealEls = document.querySelectorAll('.section, .portfolio__content, .about__img, .skills__content');
-revealEls.forEach(el => el.classList.add('reveal'));
-const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            io.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.15 });
-revealEls.forEach(el => io.observe(el));
 
-/*==================== Count Up Achievements ====================*/
-const counters = document.querySelectorAll('.achv__num');
-if (counters.length) {
-    const format = (n) => Number(n).toLocaleString();
-    const runCounter = (el) => {
-        const target = parseFloat(el.getAttribute('data-target')) || 0;
-        const duration = 1200;
-        const startTime = performance.now();
-        const isFloat = !Number.isInteger(target);
-        function tick(now) {
-            const p = Math.min((now - startTime) / duration, 1);
-            const value = target * p;
-            el.textContent = isFloat ? value.toFixed(2) : Math.floor(value).toString();
-            if (p < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-    };
-    const io2 = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                runCounter(entry.target.querySelector('.achv__num'));
-                io2.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.4 });
-    document.querySelectorAll('.achv__item').forEach(item => io2.observe(item));
-}
