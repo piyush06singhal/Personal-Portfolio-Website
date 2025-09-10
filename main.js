@@ -71,7 +71,12 @@ modalCloses.forEach((modalClose) => {
 var swiper = new Swiper(".portfolio__container", {
     cssMode: true,
     loop: true,
-
+    slidesPerView: 1,
+    spaceBetween: 24,
+    breakpoints: {
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+    },
     navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -159,3 +164,16 @@ themeButton.addEventListener("click", () => {
     localStorage.setItem("selected-theme", getCurrentTheme());
     localStorage.setItem("selected-icon", getCurrentIcon());
 });
+
+/*==================== Reveal on Scroll ====================*/
+const revealEls = document.querySelectorAll('.section, .portfolio__content, .about__img, .skills__content');
+revealEls.forEach(el => el.classList.add('reveal'));
+const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+revealEls.forEach(el => io.observe(el));
