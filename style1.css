@@ -547,8 +547,10 @@ button.swiper-pagination-bullet {
 .education-content .row {
   display: flex;
   border-radius: 5px;
-  height: 400px;
-  margin-bottom: 250px;
+  min-height: 0;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .education-content .title {
@@ -557,9 +559,9 @@ button.swiper-pagination-bullet {
 .education-content .row .education,
 .education-content .row .internship {
   color: #fa3737;
-  flex: 0 0 50%;
-  max-width: 50%;
-  margin-top: 30px;
+  flex: 1 1 320px;
+  max-width: 100%;
+  margin-top: 10px;
 }
 .education-content h3.title {
   font-size: 24px;
@@ -571,8 +573,7 @@ button.swiper-pagination-bullet {
   max-width: 100%;
 }
 .education-content .row .timeline {
-  /* background-color:#e5e5e5; */
-  padding: 30px 15px;
+  padding: 24px 16px;
   border: 1px solid #e5e5e5;
   border-radius: 10px;
   width: 100%;
