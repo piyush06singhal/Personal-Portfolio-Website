@@ -72,10 +72,10 @@ var swiper = new Swiper(".portfolio__container", {
     cssMode: true,
     loop: true,
     slidesPerView: 1,
-    spaceBetween: 24,
+    spaceBetween: 20,
     breakpoints: {
         768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 }
+        1024: { slidesPerView: 2 }
     },
     navigation: {
         nextEl: ".swiper-button-next",
@@ -177,3 +177,31 @@ const io = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.15 });
 revealEls.forEach(el => io.observe(el));
+
+/*==================== Count Up Achievements ====================*/
+const counters = document.querySelectorAll('.achv__num');
+if (counters.length) {
+    const format = (n) => Number(n).toLocaleString();
+    const runCounter = (el) => {
+        const target = parseFloat(el.getAttribute('data-target')) || 0;
+        const duration = 1200;
+        const startTime = performance.now();
+        const isFloat = !Number.isInteger(target);
+        function tick(now) {
+            const p = Math.min((now - startTime) / duration, 1);
+            const value = target * p;
+            el.textContent = isFloat ? value.toFixed(2) : Math.floor(value).toString();
+            if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+    };
+    const io2 = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                runCounter(entry.target.querySelector('.achv__num'));
+                io2.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.achv__item').forEach(item => io2.observe(item));
+}
