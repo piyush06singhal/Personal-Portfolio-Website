@@ -107,7 +107,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  margin: 0 0 var(--header-height) 0;
+  margin: var(--header-height) 0 0 0;
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   background: linear-gradient(180deg, var(--body-gradient-start), var(--body-gradient-end)) fixed;
@@ -150,7 +150,7 @@ img {
 }
 
 .container {
-  max-width: 768px;
+  max-width: 1100px;
   margin-left: var(--mb-1-5);
   margin-right: var(--mb-1-5);
 }
@@ -162,7 +162,7 @@ img {
 .header {
   width: 100%;
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   z-index: var(--z-fixed);
   background-color: var(--body-color);
@@ -195,13 +195,13 @@ img {
 @media screen and (max-width: 767px) {
   .nav__menu {
     position: fixed;
-    bottom: -100%;
+    top: -100%;
     left: 0;
     width: 100%;
     background-color: var(--body-color);
-    padding: 2rem 1.5rem 4rem;
-    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
-    border-radius: 1.5rem 1.5rem 0 0;
+    padding: 2rem 1.5rem 2rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 1.5rem 1.5rem;
     transition: 0.3s;
   }
 }
@@ -233,7 +233,7 @@ img {
 .nav__close {
   position: absolute;
   right: 1.3rem;
-  bottom: 0.5rem;
+  top: 0.8rem;
   font-size: 1.5rem;
   cursor: pointer;
   color: var(--first-color);
@@ -245,7 +245,7 @@ img {
 
 /* Show Menu */
 .show-menu {
-  bottom: 0;
+  top: 0;
 }
 
 /* Active Link */
@@ -283,7 +283,7 @@ img {
 }
 
 .home__blob {
-  width: 180px;
+  width: 220px;
   fill: var(--first-color);
   /* fill: hsl(69, 69%, 61%); */
 }
@@ -291,6 +291,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: translate(-8%, -6%) scale(1.25);
 }
 .home__data {
   grid-column: 1/3;
@@ -619,6 +620,12 @@ img {
 }
 
 /*================= Services ==================*/
+.services__grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+.service__card { background: var(--container-color); border-radius: 1rem; padding: 1.5rem; box-shadow: 0 8px 24px rgba(0,0,0,.06); transition: transform .2s ease, box-shadow .2s ease; }
+.service__card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.1); }
+.service__icon { font-size: 1.75rem; color: var(--first-color); }
+.service__title { margin-top: .75rem; margin-bottom: .25rem; }
+.service__desc { color: var(--text-color); }
 
 .services_container {
   gap: 1.5rem;
@@ -699,6 +706,9 @@ img {
 }
 
 /*================== Portfolio ==================*/
+/*================ Tech Stack =================*/
+.stack__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: .75rem; align-items: center; }
+.stack__badge { display: inline-block; padding: .5rem .75rem; background: var(--container-color); border-radius: 999px; box-shadow: 0 4px 14px rgba(0,0,0,.06); font-size: var(--small-font-size); text-align: center; }
 
 .portfolio__container {
   overflow: initial;
@@ -807,6 +817,11 @@ img {
 }
 
 /*=================== Footer ==================*/
+/*================ Achievements ================*/
+.achievements__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; align-items: stretch; }
+.achv__item { background: var(--container-color); border-radius: 1rem; padding: 1.25rem; text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+.achv__num { display: block; font-size: 2rem; color: var(--first-color); font-weight: var(--font-semi-bold); line-height: 1; }
+.achv__label { display: block; margin-top: .25rem; font-size: var(--small-font-size); color: var(--text-color); }
 
 .footer {
   padding-top: 2rem;
